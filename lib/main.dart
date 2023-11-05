@@ -46,81 +46,64 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(color: Colors.white)),
         actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.black)],
       ),
-      body: Center(
-        child: Container(
-          alignment: Alignment.center,
+      body: const Center(
+        child: Card(
           color: Colors.amberAccent,
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          borderOnForeground: true,
+          elevation: 50,
+          shadowColor: Colors.black,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(padding: EdgeInsets.all(20)),
-                  Text(
-                    "Air Canada :",
-                    textDirection: TextDirection.ltr,
-                    style: optionalStyle,
-                  ),
-                  Padding(padding: EdgeInsets.all(10)),
-                  Expanded(
-                    child: Text(
-                      "Vol de toronto a Ottawa via Montreal",
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  )
-                ],
+              ListTile(
+                leading: Icon(
+                  Icons.person,
+                  color: Colors.blue,
+                  size: 30,
+                ),
+                title: Text(
+                  "nom : doukis ",
+                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
+                ),
+                subtitle: Text(
+                  "Prénom :  Code",
+                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Air Canada :",
-                    textDirection: TextDirection.ltr,
-                    style: optionalStyle,
-                  ),
-                  Padding(padding: EdgeInsets.all(10)),
-                  Expanded(
-                    child: Text(
-                      "Vol de toronto a Ottawa via Montreal",
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  )
-                ],
+              Divider(),
+              ListTile(
+                leading: Icon(
+                  Icons.phone,
+                  color: Colors.blue,
+                  size: 30,
+                ),
+                title: Text(
+                  "Phone :  ",
+                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
+                ),
+                subtitle: Text(
+                  "0708010024",
+                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
+                ),
+              ),
+              Divider(),
+              ListTile(
+                leading: Icon(
+                  Icons.email,
+                  color: Colors.blue,
+                  size: 30,
+                ),
+                title: Text(
+                  "email :  ",
+                  style: TextStyle(color: Colors.green, fontSize: 16),
+                ),
+                subtitle: Text(
+                  "doukissss@gmail.com",
+                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
+                ),
               ),
             ],
           ),
-          /* child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(padding: EdgeInsets.all(20)),
-              Expanded(
-                child: Text(
-                  "Air Canada",
-                  textDirection: TextDirection.ltr,
-                  style: optionalStyle,
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  "Vol de toronto a Ottawa via Montreal",
-                  textDirection: TextDirection.ltr,
-                  style: TextStyle(
-                      color: Colors.orangeAccent,
-                      fontSize: 35,
-                      fontWeight: FontWeight.w700),
-                ),
-              )
-            ],
-          ), */
         ),
       ),
     );

@@ -46,76 +46,224 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(color: Colors.white)),
         actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.green)],
       ),
-      body: Stack(
-        children: [
-          Flex(
-            direction: Axis.vertical,
-            children: [
-              Expanded(
-                  flex: 1,
-                  child: Container(
-                    color: Colors.black,
-                  )),
-              Expanded(
-                  flex: 3,
-                  child: Container(
-                    color: Colors.amber,
-                  )),
-            ],
-          ),
-          Container(
-            color: Colors.green,
-            height: 500,
-            width: 320,
-            margin: const EdgeInsets.all(20),
-            child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Container(
-                  color: Colors.black,
-                  height: 100,
-                  width: 100,
-                ),
-                Container(
-                  color: Colors.blue,
-                  height: 100,
-                  width: 100,
-                ),
-                Row(
-                  children: <Widget>[
-                    Container(
-                      margin: const EdgeInsets.all(10),
-                      color: Colors.red,
-                      height: 100,
-                      width: 100,
-                    ),
-                    Container(
-                      color: Colors.purple,
-                      height: 100,
-                      width: 100,
-                    )
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
-        /* child: Stack(
-          alignment: Alignment.topRight,
+      body: Center(
+        child: Column(
           children: <Widget>[
-            Container(
-              height: 250,
-              width: 250,
-              color: Colors.amberAccent,
+            const Text(
+              "PROGRAMME DE VOL",
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w700),
             ),
             Container(
-              height: 100,
-              width: 100,
-              color: Colors.black,
-            )
+              color: Colors.lightBlue,
+              height: 500,
+              width: 350,
+              child: viewer(),
+            ),
           ],
-        ), */
+        ),
       ),
     );
   }
+}
+
+Widget viewer() {
+  return ListView(
+    children: const <Widget>[
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Toronto - Montreal",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "2:45 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Toronto - Ottawa",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "3:45 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Montreal - Toronto",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "2:55 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_land,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Ottawa - Toronto",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "3:15 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Toronto - Montreal",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "2:45 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Toronto - Ottawa",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "3:45 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Montreal - Toronto",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "2:55 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_land,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Ottawa - Toronto",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "3:15 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Toronto - Montreal",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "2:45 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Toronto - Ottawa",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "3:45 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_takeoff,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Montreal - Toronto",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "2:55 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+      ListTile(
+        leading: Icon(
+          Icons.flight_land,
+          color: Colors.orange,
+        ),
+        title: Text(
+          "Ottawa - Toronto",
+          style: TextStyle(
+              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(
+          "3:15 PM",
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+        ),
+      ),
+    ],
+  );
 }

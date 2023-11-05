@@ -41,70 +41,80 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue,
         title: const Text("Tutoriel flutter",
             style: TextStyle(color: Colors.white)),
-        actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.black)],
+        actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.green)],
       ),
-      body: const Center(
-        child: Card(
-          color: Colors.amberAccent,
-          borderOnForeground: true,
-          elevation: 50,
-          shadowColor: Colors.black,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          Flex(
+            direction: Axis.vertical,
             children: [
-              ListTile(
-                leading: Icon(
-                  Icons.person,
-                  color: Colors.blue,
-                  size: 30,
-                ),
-                title: Text(
-                  "nom : doukis ",
-                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
-                ),
-                subtitle: Text(
-                  "Prénom :  Code",
-                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
-                ),
-              ),
-              Divider(),
-              ListTile(
-                leading: Icon(
-                  Icons.phone,
-                  color: Colors.blue,
-                  size: 30,
-                ),
-                title: Text(
-                  "Phone :  ",
-                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
-                ),
-                subtitle: Text(
-                  "0708010024",
-                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
-                ),
-              ),
-              Divider(),
-              ListTile(
-                leading: Icon(
-                  Icons.email,
-                  color: Colors.blue,
-                  size: 30,
-                ),
-                title: Text(
-                  "email :  ",
-                  style: TextStyle(color: Colors.green, fontSize: 16),
-                ),
-                subtitle: Text(
-                  "doukissss@gmail.com",
-                  style: TextStyle(color: Colors.deepPurple, fontSize: 16),
-                ),
-              ),
+              Expanded(
+                  flex: 1,
+                  child: Container(
+                    color: Colors.black,
+                  )),
+              Expanded(
+                  flex: 3,
+                  child: Container(
+                    color: Colors.amber,
+                  )),
             ],
           ),
-        ),
+          Container(
+            color: Colors.green,
+            height: 500,
+            width: 320,
+            margin: const EdgeInsets.all(20),
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Container(
+                  color: Colors.black,
+                  height: 100,
+                  width: 100,
+                ),
+                Container(
+                  color: Colors.blue,
+                  height: 100,
+                  width: 100,
+                ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      color: Colors.red,
+                      height: 100,
+                      width: 100,
+                    ),
+                    Container(
+                      color: Colors.purple,
+                      height: 100,
+                      width: 100,
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+        /* child: Stack(
+          alignment: Alignment.topRight,
+          children: <Widget>[
+            Container(
+              height: 250,
+              width: 250,
+              color: Colors.amberAccent,
+            ),
+            Container(
+              height: 100,
+              width: 100,
+              color: Colors.black,
+            )
+          ],
+        ), */
       ),
     );
   }

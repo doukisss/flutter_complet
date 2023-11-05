@@ -32,26 +32,9 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-String _val = "";
-
 class _MyHomePageState extends State<MyHomePage> {
-  static const optionalStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  Future _datePicker() async {
-    final picker = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2018),
-        lastDate: DateTime(2030));
-
-    if (picker != null) {
-      setState(() {
-        _val = picker.toString();
-      });
-    }
-    ;
-  }
+  static const optionalStyle = TextStyle(
+      color: Colors.blueGrey, fontSize: 30, fontWeight: FontWeight.w700);
 
   @override
   Widget build(BuildContext context) {
@@ -64,25 +47,80 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.black)],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-                onPressed: _datePicker, child: const Text("Cliquer ici")),
-            const Text(
-              "Benvenue chez key coder",
-              style: optionalStyle,
-            ),
-            const Padding(padding: EdgeInsets.only(top: 20)),
-            const Text(
-              "Tuto futter boite de dialogue",
-              style: optionalStyle,
-            ),
-            Text(
-              '$_val',
-              style: const TextStyle(fontSize: 30, color: Colors.blueAccent),
-            ),
-          ],
+        child: Container(
+          alignment: Alignment.center,
+          color: Colors.amberAccent,
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(20)),
+                  Text(
+                    "Air Canada :",
+                    textDirection: TextDirection.ltr,
+                    style: optionalStyle,
+                  ),
+                  Padding(padding: EdgeInsets.all(10)),
+                  Expanded(
+                    child: Text(
+                      "Vol de toronto a Ottawa via Montreal",
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                          color: Colors.orangeAccent,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Air Canada :",
+                    textDirection: TextDirection.ltr,
+                    style: optionalStyle,
+                  ),
+                  Padding(padding: EdgeInsets.all(10)),
+                  Expanded(
+                    child: Text(
+                      "Vol de toronto a Ottawa via Montreal",
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                          color: Colors.orangeAccent,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+          /* child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(padding: EdgeInsets.all(20)),
+              Expanded(
+                child: Text(
+                  "Air Canada",
+                  textDirection: TextDirection.ltr,
+                  style: optionalStyle,
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  "Vol de toronto a Ottawa via Montreal",
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                      color: Colors.orangeAccent,
+                      fontSize: 35,
+                      fontWeight: FontWeight.w700),
+                ),
+              )
+            ],
+          ), */
         ),
       ),
     );

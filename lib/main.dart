@@ -33,8 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const optionalStyle = TextStyle(
-      color: Colors.blueGrey, fontSize: 30, fontWeight: FontWeight.w700);
+  //static const optionalStyle = TextStyle(
+  //  color: Colors.blueGrey, fontSize: 30, fontWeight: FontWeight.w700);
 
   @override
   Widget build(BuildContext context) {
@@ -46,224 +46,62 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(color: Colors.white)),
         actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.green)],
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            const Text(
-              "PROGRAMME DE VOL",
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w700),
-            ),
-            Container(
-              color: Colors.lightBlue,
-              height: 500,
-              width: 350,
-              child: viewer(),
-            ),
-          ],
-        ),
-      ),
+      body: Container(child: getListItem()),
     );
   }
 }
 
-Widget viewer() {
-  return ListView(
-    children: const <Widget>[
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Toronto - Montreal",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "2:45 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Toronto - Ottawa",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "3:45 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Montreal - Toronto",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "2:55 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_land,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Ottawa - Toronto",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "3:15 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Toronto - Montreal",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "2:45 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Toronto - Ottawa",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "3:45 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Montreal - Toronto",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "2:55 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_land,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Ottawa - Toronto",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "3:15 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Toronto - Montreal",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "2:45 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Toronto - Ottawa",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "3:45 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_takeoff,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Montreal - Toronto",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "2:55 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.flight_land,
-          color: Colors.orange,
-        ),
-        title: Text(
-          "Ottawa - Toronto",
-          style: TextStyle(
-              color: Colors.red, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        subtitle: Text(
-          "3:15 PM",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-      ),
-    ],
-  );
+List<String> getlistElement() {
+  var item = List.generate(500, (index) => "Article: $index");
+  return item;
+}
+
+List<String> getlistElementing() {
+  return [
+    "ABIDJAN => ISSIA",
+    "ABIDJAN => GAGNOA",
+    "ABIDJAN => SOUBRE",
+    "ABIDJAN => DIVO",
+    "ABIDJAN => LAKOTA",
+    "ABIDJAN => GUIGLO",
+    "ABIDJAN => KORHOGO",
+    "ABIDJAN => FERKE",
+    "ABIDJAN => BONDOUKOU",
+    "ABIDJAN => ODIENNE",
+    "ABIDJAN => GBELEBAN",
+    "ABIDJAN => SAN-PDRO",
+    "ABIDJAN => ABOISSO",
+    "ABIDJAN => NOE",
+    "ABIDJAN => BASSAM",
+    "ABIDJAN => ABOISSO",
+    "ABIDJAN => TIASSALE",
+    "ABIDJAN => MAN",
+    "ABIDJAN => DALOA",
+    "ABIDJAN => DABOU",
+    "ABIDJAN => SAMATIGUILA"
+  ];
+}
+
+Widget getListItem() {
+  var elementlist = getlistElementing();
+  var listview = ListView.builder(
+      itemCount: elementlist.length,
+      itemBuilder: (context, val) {
+        return ListTile(
+          leading: const Icon(
+            Icons.nature,
+            color: Colors.blue,
+            size: 30,
+          ),
+          title: Text(elementlist[val],
+              style: const TextStyle(
+                  color: Colors.blue,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700)),
+          onTap: () {
+            debugPrint(elementlist[val]);
+          },
+        );
+      });
+  return listview;
 }

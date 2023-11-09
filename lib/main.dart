@@ -38,70 +38,47 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-        title: const Text("Tutoriel flutter",
-            style: TextStyle(color: Colors.white)),
-        actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.green)],
-      ),
-      body: Container(child: getListItem()),
-    );
+    return MaterialApp(
+        home: DefaultTabController(
+            length: 5,
+            child: Scaffold(
+                appBar: AppBar(
+                  centerTitle: true,
+                  backgroundColor: Colors.blue,
+                  title: const Text("Tutoriel flutter",
+                      style: TextStyle(color: Colors.white)),
+                  actions: const <Widget>[
+                    Icon(Icons.thumb_up, color: Colors.green)
+                  ],
+                  bottom: const TabBar(tabs: <Widget>[
+                    Tab(
+                      icon: Icon(Icons.ac_unit),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.access_alarm),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.account_balance_sharp),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.account_circle),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.add_task),
+                    ),
+                  ]),
+                ),
+                body: TabBarView(children: <Widget>[
+                  Card(color: Colors.blue, child: Image.asset('images/1.jpeg')),
+                  Card(
+                      color: Colors.green, child: Image.asset('images/2.jpeg')),
+                  Card(color: Colors.red, child: Image.asset('images/3.jpeg')),
+                  Card(
+                      color: Colors.amberAccent,
+                      child: Image.asset('images/4.jpeg')),
+                  Card(
+                      color: Colors.yellow,
+                      child: Image.asset('images/5.jpeg')),
+                ]))));
   }
-}
-
-List<String> getlistElement() {
-  var item = List.generate(500, (index) => "Article: $index");
-  return item;
-}
-
-List<String> getlistElementing() {
-  return [
-    "ABIDJAN => ISSIA",
-    "ABIDJAN => GAGNOA",
-    "ABIDJAN => SOUBRE",
-    "ABIDJAN => DIVO",
-    "ABIDJAN => LAKOTA",
-    "ABIDJAN => GUIGLO",
-    "ABIDJAN => KORHOGO",
-    "ABIDJAN => FERKE",
-    "ABIDJAN => BONDOUKOU",
-    "ABIDJAN => ODIENNE",
-    "ABIDJAN => GBELEBAN",
-    "ABIDJAN => SAN-PDRO",
-    "ABIDJAN => ABOISSO",
-    "ABIDJAN => NOE",
-    "ABIDJAN => BASSAM",
-    "ABIDJAN => ABOISSO",
-    "ABIDJAN => TIASSALE",
-    "ABIDJAN => MAN",
-    "ABIDJAN => DALOA",
-    "ABIDJAN => DABOU",
-    "ABIDJAN => SAMATIGUILA"
-  ];
-}
-
-Widget getListItem() {
-  var elementlist = getlistElementing();
-  var listview = ListView.builder(
-      itemCount: elementlist.length,
-      itemBuilder: (context, val) {
-        return ListTile(
-          leading: const Icon(
-            Icons.nature,
-            color: Colors.blue,
-            size: 30,
-          ),
-          title: Text(elementlist[val],
-              style: const TextStyle(
-                  color: Colors.blue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700)),
-          onTap: () {
-            debugPrint(elementlist[val]);
-          },
-        );
-      });
-  return listview;
 }

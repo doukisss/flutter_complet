@@ -51,87 +51,111 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icon(Icons.thumb_up, color: Colors.green)
                   ],
                 ),
-                body: PageView.builder(
-                  itemBuilder: (BuildContext buildcontext, int index) =>
-                      Pagewidget(
-                    entry: pages[index],
+                body: Center(
+                  child: ListView(
+                    children: [
+                      const Text(
+                        "MENU DU RESTAURENT",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset('images/frites_a_la_viande.jpeg'),
+                          TextButton.icon(
+                            onPressed: () {
+                              var route = MaterialPageRoute(
+                                  builder: (BuildContext context) => SeconPage(
+                                      val1: 'images/frites_a_la_viande.jpeg',
+                                      val2: 'images/frites_a_la_viande.jpeg'));
+                              Navigator.of(context).push(route);
+                            },
+                            icon: const Icon(Icons.food_bank),
+                            label: const Text('Détails'),
+                          )
+                        ],
+                      ),
+                      const Text(
+                        "Frites à la viande de boeuf",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 30,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset('images/salade_composé.jpeg'),
+                          TextButton.icon(
+                            onPressed: () {
+                              var route = MaterialPageRoute(
+                                  builder: (BuildContext context) => SeconPage(
+                                      val1: "Salade composé",
+                                      val2: 'images/salade_composé.jpeg'));
+                              Navigator.of(context).push(route);
+                            },
+                            icon: const Icon(Icons.food_bank),
+                            label: const Text('Détails'),
+                          )
+                        ],
+                      ),
+                      const Text(
+                        "Salade composé",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 40,
+                        ),
+                      )
+                    ],
                   ),
-                  itemCount: pages.length,
                 ))));
   }
 }
 
-class Pageinfo {
-  final String title;
-  final String image;
-  final String description;
-  const Pageinfo(this.title, this.image, this.description);
-}
+class SeconPage extends StatelessWidget {
+  final val1;
+  final val2;
 
-final List<Pageinfo> pages = [
-  const Pageinfo('LE MEILLEUR MODELE N°1', 'images/1.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°2', 'images/2.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°3', 'images/3.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°4', 'images/4.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°5', 'images/5.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°6', 'images/6.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°7', 'images/7.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°8', 'images/8.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°9', 'images/9.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adip9scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-  const Pageinfo('LE MEILLEUR MODELE N°10', 'images/10.jpeg',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '),
-];
+  const SeconPage({super.key, required this.val1, required this.val2});
 
-class Pagewidget extends StatefulWidget {
-  final Pageinfo entry;
-  const Pagewidget({super.key, required this.entry});
-
-  @override
-  State<Pagewidget> createState() => _PagewidgetState();
-}
-
-class _PagewidgetState extends State<Pagewidget> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.all(10),
-        child: ListView(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text(
-                  widget.entry.title,
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 25,
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: 10),
-            Image.asset(
-              widget.entry.image,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 10),
-            Text(
-              widget.entry.description,
-              style: TextStyle(
-                color: Colors.blue,
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+    return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.black,
+          title: const Text("Tutoriel flutter",
+              style: TextStyle(color: Colors.white)),
+          actions: const <Widget>[Icon(Icons.access_alarm, color: Colors.red)],
+        ),
+        body: Center(
+          child: ListView(
+            children: [
+              Text(
+                val1,
+                style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.w700),
               ),
-            )
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(val2),
+                ],
+              ),
+              const Text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 30,
+                ),
+              ),
+            ],
+          ),
         ));
   }
 }

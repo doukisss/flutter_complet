@@ -36,6 +36,47 @@ class _MyHomePageState extends State<MyHomePage> {
   //static const optionalStyle = TextStyle(
   //  color: Colors.blueGrey, fontSize: 30, fontWeight: FontWeight.w700);
 
+  late List<Geo> geos;
+  @override
+  void initState() {
+    super.initState();
+    geos = Geo.geolist();
+  }
+
+  Widget tablegeo() {
+    return DataTable(
+        columns: const [
+          DataColumn(
+              label: Text(
+            "Pays",
+            style: TextStyle(color: Colors.blue),
+          )),
+          DataColumn(
+              label: Text(
+            "Capitale",
+            style: TextStyle(color: Colors.blue),
+          )),
+          DataColumn(
+              label: Text(
+            "Continent",
+            style: TextStyle(color: Colors.blue),
+          ))
+        ],
+        rows: geos
+            .map((geo) => DataRow(cells: [
+                  DataCell(
+                    Text(geo.pays),
+                  ),
+                  DataCell(
+                    Text(geo.capitale),
+                  ),
+                  DataCell(
+                    Text(geo.continent),
+                  ),
+                ]))
+            .toList());
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,109 +94,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 body: Center(
                   child: ListView(
-                    children: [
-                      const Text(
-                        "MENU DU RESTAURENT",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 40,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Image.asset('images/frites_a_la_viande.jpeg'),
-                          TextButton.icon(
-                            onPressed: () {
-                              var route = MaterialPageRoute(
-                                  builder: (BuildContext context) => SeconPage(
-                                      val1: 'images/frites_a_la_viande.jpeg',
-                                      val2: 'images/frites_a_la_viande.jpeg'));
-                              Navigator.of(context).push(route);
-                            },
-                            icon: const Icon(Icons.food_bank),
-                            label: const Text('Détails'),
-                          )
-                        ],
-                      ),
-                      const Text(
-                        "Frites à la viande de boeuf",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 30,
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Image.asset('images/salade_composé.jpeg'),
-                          TextButton.icon(
-                            onPressed: () {
-                              var route = MaterialPageRoute(
-                                  builder: (BuildContext context) => SeconPage(
-                                      val1: "Salade composé",
-                                      val2: 'images/salade_composé.jpeg'));
-                              Navigator.of(context).push(route);
-                            },
-                            icon: const Icon(Icons.food_bank),
-                            label: const Text('Détails'),
-                          )
-                        ],
-                      ),
-                      const Text(
-                        "Salade composé",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 40,
-                        ),
-                      )
-                    ],
+                    children: [tablegeo()],
                   ),
                 ))));
   }
 }
 
-class SeconPage extends StatelessWidget {
-  final val1;
-  final val2;
+class Geo {
+  String pays;
+  String capitale;
+  String continent;
+  Geo({required this.pays, required this.capitale, required this.continent});
 
-  const SeconPage({super.key, required this.val1, required this.val2});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.black,
-          title: const Text("Tutoriel flutter",
-              style: TextStyle(color: Colors.white)),
-          actions: const <Widget>[Icon(Icons.access_alarm, color: Colors.red)],
-        ),
-        body: Center(
-          child: ListView(
-            children: [
-              Text(
-                val1,
-                style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Image.asset(val2),
-                ],
-              ),
-              const Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 30,
-                ),
-              ),
-            ],
-          ),
-        ));
+  static List<Geo> geolist() {
+    return <Geo>[
+      Geo(pays: "Canada", capitale: "Toronto", continent: "Amerique"),
+      Geo(pays: "USA", capitale: "Washington", continent: "Amerique"),
+      Geo(pays: "Mexique", capitale: "Mexico", continent: "Amerique"),
+      Geo(pays: "Brésil", capitale: "Rio", continent: "Amerique"),
+      Geo(pays: "France", capitale: "Paris", continent: "Europe"),
+      Geo(pays: "Belgique", capitale: "Luxembourg", continent: "Europe"),
+      Geo(pays: "Italie", capitale: "Rome", continent: "Europe"),
+      Geo(pays: "Espagne", capitale: "Madrid", continent: "Europe"),
+      Geo(
+          pays: "Côte D'Ivoire",
+          capitale: "Yamoussoukro",
+          continent: "Afrique"),
+      Geo(pays: "Ghana", capitale: "Accra", continent: "Afrique"),
+      Geo(pays: "Mali", capitale: "Bamako", continent: "Afrique"),
+      Geo(pays: "Guinée", capitale: "Conakri", continent: "Afrique"),
+    ];
   }
 }

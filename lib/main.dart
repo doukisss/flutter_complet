@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -37,26 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
   //static const optionalStyle = TextStyle(
   //  color: Colors.blueGrey, fontSize: 30, fontWeight: FontWeight.w700);
 
-  Widget resto(String menu, Color color, String image) {
-    return Container(
-      color: color,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Image.asset(
-            image,
-            height: 150,
-            width: 150,
-          ),
-          Text(
-            menu,
-            style: TextStyle(fontSize: 20, color: Colors.white),
-          )
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -69,46 +51,58 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: const Text("Tutoriel flutter",
                       style: TextStyle(color: Colors.white)),
                   actions: const <Widget>[
-                    Icon(Icons.thumb_up, color: Colors.green)
+                    Icon(Icons.thumb_up, color: Color.fromRGBO(76, 175, 80, 1))
                   ],
                 ),
-                body: CustomScrollView(
-                  slivers: [
-                    SliverAppBar(
-                      floating: false,
-                      pinned: true,
-                      expandedHeight: 200,
-                      backgroundColor: Colors.transparent,
-                      flexibleSpace: FlexibleSpaceBar(
-                        title: const Text(
-                          "Menu du Restaurant",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        background: Image.asset(
-                          "images/menu.jpeg",
-                          fit: BoxFit.cover,
+                body: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage(
+                              'https://images.unsplash.com/photo-1654089526090-1ffbe147bf30?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
                         ),
                       ),
                     ),
-                    SliverFixedExtentList(
-                      itemExtent: 150,
-                      delegate: SliverChildListDelegate(
-                        [
-                          resto('Frite à la viande', Colors.blue,
-                              'images/frites_a_la_viande.jpeg'),
-                          resto('Salade composé', Colors.blue,
-                              'images/salade_composé.jpeg'),
-                          resto('Boisson', Colors.blue, 'images/boisson.jpeg'),
-                          resto('Humburger', Colors.blue,
-                              'images/humburger.jpeg'),
-                          resto('Pizza', Colors.blue, 'images/pizza.jpeg'),
-                          resto('Poisson braisé', Colors.blue,
-                              'images/poisson_braisé.jpeg'),
-                          resto('Poulet', Colors.blue, 'images/poulet.jpeg'),
-                          resto('Spaguetti.jpeg', Colors.blue,
-                              'images/spaguetti.jpeg'),
-                          resto('Viande', Colors.blue, 'images/viande.jpeg'),
-                        ],
+                    Positioned(
+                      top: 100,
+                      left: 50,
+                      right: 50,
+                      bottom: 100,
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            color: Colors.green.withOpacity(0.5),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Coder avec Doukis Coder",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Text(
+                                  "Salut bienvenue",
+                                  style: TextStyle(
+                                      fontSize: 25, color: Colors.red),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
                     )
                   ],

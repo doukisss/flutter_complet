@@ -64,7 +64,14 @@ flutter:
   #   - images/a_dot_ham.jpeg
       - images/frites_a_la_viande.jpeg
       - images/salade_composé.jpeg
-
+      - images/menu.jpeg
+      - images/boisson.jpeg  
+      - images/humburger.jpeg
+      - images/pizza.jpeg
+      - images/poisson_braisé.jpeg
+      - images/poulet.jpeg
+      - images/spaguetti.jpeg
+      - images/viande.jpeg
       
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

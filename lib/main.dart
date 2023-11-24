@@ -37,27 +37,24 @@ class _MyHomePageState extends State<MyHomePage> {
   //static const optionalStyle = TextStyle(
   //  color: Colors.blueGrey, fontSize: 30, fontWeight: FontWeight.w700);
 
-  String value = '';
-  String name = '';
-  String phone = '';
-  String password = '';
-
-  final formkey = new GlobalKey<FormState>();
-
-  @override
-  void affichage(String a) {
-    setState(() {
-      value = 'Bienvenue $a';
-    });
-  }
-
-  validationform() {
-    if (formkey.currentState!.validate()) {
-      formkey.currentState!.save();
-      debugPrint(name);
-      debugPrint(phone);
-      debugPrint(password);
-    } else {}
+  Widget resto(String menu, Color color, String image) {
+    return Container(
+      color: color,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image.asset(
+            image,
+            height: 150,
+            width: 150,
+          ),
+          Text(
+            menu,
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          )
+        ],
+      ),
+    );
   }
 
   @override
@@ -66,87 +63,55 @@ class _MyHomePageState extends State<MyHomePage> {
         home: DefaultTabController(
             length: 5,
             child: Scaffold(
-              appBar: AppBar(
-                centerTitle: true,
-                backgroundColor: Colors.blue,
-                title: const Text("Tutoriel flutter",
-                    style: TextStyle(color: Colors.white)),
-                actions: const <Widget>[
-                  Icon(Icons.thumb_up, color: Colors.green)
-                ],
-              ),
-              body: Form(
-                key: formkey,
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        value,
-                        style: TextStyle(
-                          color: Colors.amber,
-                          fontSize: 25,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            labelText: 'Nom',
-                            hintText: 'inserer votre nom ici',
-                            icon: Icon(
-                              Icons.person,
-                              size: 25,
-                              color: Colors.blue,
-                            )),
-                        validator: (val) => '$val'.isEmpty
-                            ? 'veillez renseignez votre nom'
-                            : null,
-                        onSaved: (val) => name = '$val',
-                        keyboardType: TextInputType.text,
-                        autocorrect: true,
-                        autofocus: true,
-                        onChanged: affichage,
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            labelText: 'Numero',
-                            hintText: 'inserer votre phone ici',
-                            icon: Icon(
-                              Icons.person,
-                              size: 25,
-                              color: Colors.blue,
-                            )),
-                        validator: (val) => '$val'.isEmpty
-                            ? 'veillez renseignez votre phone'
-                            : null,
-                        onSaved: (val) => phone = '$val',
-                        keyboardType: TextInputType.phone,
-                        autocorrect: true,
-                        autofocus: true,
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            labelText: 'Mot de passe',
-                            hintText: 'inserer votre mot de passe ici',
-                            icon: Icon(
-                              Icons.person,
-                              size: 25,
-                              color: Colors.blue,
-                            )),
-                        validator: (val) => '$val'.isEmpty
-                            ? 'veillez renseignez votre mot de passe'
-                            : null,
-                        onSaved: (val) => password = '$val',
-                        keyboardType: TextInputType.text,
-                        obscureText: true,
-                        autocorrect: true,
-                        autofocus: true,
-                      ),
-                      TextButton(
-                          onPressed: validationform, child: Text('Valider'))
-                    ],
-                  ),
+                appBar: AppBar(
+                  centerTitle: true,
+                  backgroundColor: Colors.blue,
+                  title: const Text("Tutoriel flutter",
+                      style: TextStyle(color: Colors.white)),
+                  actions: const <Widget>[
+                    Icon(Icons.thumb_up, color: Colors.green)
+                  ],
                 ),
-              ),
-            )));
+                body: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      floating: false,
+                      pinned: true,
+                      expandedHeight: 200,
+                      backgroundColor: Colors.transparent,
+                      flexibleSpace: FlexibleSpaceBar(
+                        title: const Text(
+                          "Menu du Restaurant",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        background: Image.asset(
+                          "images/menu.jpeg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SliverFixedExtentList(
+                      itemExtent: 150,
+                      delegate: SliverChildListDelegate(
+                        [
+                          resto('Frite à la viande', Colors.blue,
+                              'images/frites_a_la_viande.jpeg'),
+                          resto('Salade composé', Colors.blue,
+                              'images/salade_composé.jpeg'),
+                          resto('Boisson', Colors.blue, 'images/boisson.jpeg'),
+                          resto('Humburger', Colors.blue,
+                              'images/humburger.jpeg'),
+                          resto('Pizza', Colors.blue, 'images/pizza.jpeg'),
+                          resto('Poisson braisé', Colors.blue,
+                              'images/poisson_braisé.jpeg'),
+                          resto('Poulet', Colors.blue, 'images/poulet.jpeg'),
+                          resto('Spaguetti.jpeg', Colors.blue,
+                              'images/spaguetti.jpeg'),
+                          resto('Viande', Colors.blue, 'images/viande.jpeg'),
+                        ],
+                      ),
+                    )
+                  ],
+                ))));
   }
 }

@@ -55,145 +55,121 @@ class _MyHomePageState extends State<MyHomePage> {
                   actions: const <Widget>[
                     Icon(Icons.thumb_up, color: Color.fromRGBO(76, 175, 80, 1))
                   ],
+                  bottom: TabBar(tabs: [
+                    Tab(
+                      icon: Icon(
+                        Icons.home,
+                        size: 30,
+                      ),
+                    ),
+                    Tab(
+                      icon: Icon(
+                        Icons.hotel_sharp,
+                        size: 30,
+                      ),
+                    )
+                  ]),
                 ),
-                body: Container(
-                    margin: const EdgeInsets.all(10),
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 5,
-                      crossAxisSpacing: 5,
-                      children: List.generate(infos.length, (index) {
-                        return Showhouses(verif: infos[index]);
-                      }),
-                    )))));
-  }
-}
-
-class House {
-  String image;
-  String title;
-  String city;
-  House({required this.image, required this.title, required this.city});
-}
-
-List<House> infos = [
-  House(
-      image:
-          'https://www.expat.com/upload/housing/751916/1696876672493_3001865-full_size_3x2-t1696876771.jpg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/751916/1696876672626_3001865-full_size_3x2-t1696876774.jpg',
-      title: 'DUPLEX VILLA',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/751916/1696876672574_3001865-full_size_3x2-t1696876774.jpg',
-      title: '6 ROOM DUPLEX VILLA ',
-      city: 'RIVIERA 4'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750443/1694722465219_3679875-full_size_3x2-t1694835025.jpg',
-      title: '6 room duplex villa',
-      city: 'Riviera 3'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750443/1694722489180_3679875-full_size_3x2-t1694835025.jpg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg',
-      title: 'low 5 room villa',
-      city: '2 Plateau'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/751916/1696876672493_3001865-full_size_3x2-t1696876771.jpg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/751916/1696876672626_3001865-full_size_3x2-t1696876774.jpg',
-      title: 'DUPLEX VILLA',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/751916/1696876672574_3001865-full_size_3x2-t1696876774.jpg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750443/1694722465219_3679875-full_size_3x2-t1694835025.jpg',
-      title: 'DUPLEX VILLA',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750443/1694722489180_3679875-full_size_3x2-t1694835025.jpg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg',
-      title: 'DUPLEX VILLA',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750352/1694700846349_3001865-full_size_3x2-t1694701032.jpeg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750352/1694700837060_3001865-full_size_3x2-t1694701031.jpeg',
-      title: 'DUPLEX VILLA',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750443/1694722522487_3679875-full_size_3x2-t1694835025.jpg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750352/1694700832242_3001865-full_size_3x2-t1694701031.jpeg',
-      title: 'DUPLEX VILLA',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750352/1694700837060_3001865-full_size_3x2-t1694701031.jpeg',
-      title: 'Villa Riviera 3',
-      city: 'Abidjan'),
-  House(
-      image:
-          'https://www.expat.com/upload/housing/750352/1694700846349_3001865-full_size_3x2-t1694701032.jpeg',
-      title: 'DUPLEX VILLA',
-      city: 'Abidjan'),
-];
-
-class Showhouses extends StatelessWidget {
-  final House verif;
-  const Showhouses({super.key, required this.verif});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //mainAxisSize: MainAxisSize.max,
-      children: [
-        ClipRRect(
-          child: Image.network(
-            verif.image,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        Text(
-          verif.title,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        Text(
-          verif.city,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ],
-    );
+                body: TabBarView(children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Container(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.network(
+                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
+                                    height: 300,
+                                    width: 300,
+                                  ),
+                                ),
+                                SizedBox(width: 30),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.network(
+                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
+                                    height: 300,
+                                    width: 300,
+                                  ),
+                                ),
+                                SizedBox(width: 30),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.network(
+                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
+                                    height: 300,
+                                    width: 300,
+                                  ),
+                                ),
+                                SizedBox(width: 30),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.network(
+                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
+                                    height: 300,
+                                    width: 300,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.height,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.network(
+                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
+                              height: 300,
+                              width: 300,
+                            ),
+                          ),
+                          SizedBox(height: 30),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.network(
+                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
+                              height: 300,
+                              width: 300,
+                            ),
+                          ),
+                          SizedBox(height: 30),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.network(
+                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
+                              height: 300,
+                              width: 300,
+                            ),
+                          ),
+                          SizedBox(height: 30),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.network(
+                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
+                              height: 300,
+                              width: 300,
+                            ),
+                          ),
+                          SizedBox(height: 30),
+                        ],
+                      ),
+                    ),
+                  )
+                ]))));
   }
 }

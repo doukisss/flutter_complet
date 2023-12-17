@@ -41,6 +41,79 @@ class _MyHomePageState extends State<MyHomePage> {
   //static const optionalStyle = TextStyle(
   //  color: Colors.blueGr jhey, fontSize: 30, fontWeight: FontWeight.w700);
 
+  int initstep = 0;
+
+  List<Step> steps = [
+    const Step(
+      title: Text(
+        "Veuillez confirmer votre nom",
+        style: TextStyle(color: Colors.blue),
+      ),
+      content: Text(
+        "Doukiss Coder",
+        style: TextStyle(color: Colors.blue),
+      ),
+      subtitle: Text(
+        "Etape 1",
+        style: TextStyle(color: Colors.blue),
+      ),
+    ),
+    const Step(
+      title: Text(
+        "Veuillez confirmer votre numéro",
+        style: TextStyle(color: Colors.blue),
+      ),
+      content: Text(
+        "0107080904",
+        style: TextStyle(color: Colors.blue),
+      ),
+      subtitle: Text(
+        "Etape 2",
+        style: TextStyle(color: Colors.blue),
+      ),
+    ),
+    const Step(
+      title: Text(
+        "Veuillez confirmer votre adresse",
+        style: TextStyle(color: Colors.blue),
+      ),
+      content: Text(
+        "12 bp 1367 Abidjan12",
+        style: TextStyle(color: Colors.blue),
+      ),
+      subtitle: Text(
+        "Etape 3",
+        style: TextStyle(color: Colors.blue),
+      ),
+    ),
+    const Step(
+      title: Text(
+        "Veuillez confirmer votre sexe",
+        style: TextStyle(color: Colors.blue),
+      ),
+      content: Text(
+        "Masculin",
+        style: TextStyle(color: Colors.blue),
+      ),
+      subtitle: Text(
+        "Etape 4",
+        style: TextStyle(color: Colors.blue),
+      ),
+    ),
+    Step(
+      title: Text(
+        "MERCI",
+        style: TextStyle(color: Colors.blue),
+      ),
+      content: Image.network(
+          "https://media.istockphoto.com/id/1262143374/photo/holding-the-paper-with-thank-you-message-in-front-of-a-beautiful-blur-nature-background.jpg?b=1&s=612x612&w=0&k=20&c=T1AINhaJh43Jh3kbUQxMsemAI01mXOpw6vbWrgLqUyo="),
+      subtitle: Text(
+        "Doukiss Coder",
+        style: TextStyle(color: Colors.blue),
+      ),
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,121 +128,36 @@ class _MyHomePageState extends State<MyHomePage> {
                   actions: const <Widget>[
                     Icon(Icons.thumb_up, color: Color.fromRGBO(76, 175, 80, 1))
                   ],
-                  bottom: TabBar(tabs: [
-                    Tab(
-                      icon: Icon(
-                        Icons.home,
-                        size: 30,
-                      ),
-                    ),
-                    Tab(
-                      icon: Icon(
-                        Icons.hotel_sharp,
-                        size: 30,
-                      ),
-                    )
-                  ]),
                 ),
-                body: TabBarView(children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Container(
-                            child: Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Image.network(
-                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
-                                    height: 300,
-                                    width: 300,
-                                  ),
-                                ),
-                                SizedBox(width: 30),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Image.network(
-                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
-                                    height: 300,
-                                    width: 300,
-                                  ),
-                                ),
-                                SizedBox(width: 30),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Image.network(
-                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
-                                    height: 300,
-                                    width: 300,
-                                  ),
-                                ),
-                                SizedBox(width: 30),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Image.network(
-                                    "https://www.expat.com/upload/housing/750443/1694722497688_3679875-full_size_3x2-t1694835025.jpg",
-                                    height: 300,
-                                    width: 300,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.height,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.network(
-                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
-                              height: 300,
-                              width: 300,
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.network(
-                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
-                              height: 300,
-                              width: 300,
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.network(
-                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
-                              height: 300,
-                              width: 300,
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.network(
-                              "https://images.pexels.com/photos/3406020/pexels-photo-3406020.jpeg?auto=compress&cs=tinysrgb&w=400",
-                              height: 300,
-                              width: 300,
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                        ],
-                      ),
-                    ),
-                  )
-                ]))));
+                body: Stepper(
+                  currentStep: initstep,
+                  steps: steps,
+                  type: StepperType.vertical,
+                  onStepTapped: (Step) {
+                    setState(() {
+                      initstep = Step;
+                    });
+                  },
+                  onStepContinue: () {
+                    setState(() {
+                      if (initstep < steps.length - 1) {
+                        initstep = initstep + 1;
+                      } else {
+                        initstep = 0;
+                      }
+                    });
+                  },
+                  onStepCancel: () {
+                    setState(() {
+                      if (initstep > 0) {
+                        initstep = initstep - 1;
+                      } else {
+                        initstep = 0;
+                      }
+                    });
+                  },
+                )
+                //TabBarView(     )
+                )));
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: empty_constructor_bodies
+
 import 'package:flutter/material.dart';
 import 'package:star_rating/star_rating.dart';
 
@@ -33,17 +35,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String info = '';
-  bool change = true;
+  Animaux selectitem = choix[0];
 
-  String a = 'images/boisson.jpeg';
-  String b = 'images/pizza.jpeg';
-  String c = 'images/poulet.jpeg';
-  String d = 'images/viande.jpeg';
-
-  void onsubmit(String value) {
+  void select(info) {
     setState(() {
-      info = value;
+      selectitem = info;
     });
   }
 
@@ -55,91 +51,74 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.purpleAccent,
           title: const Text("Tutoriel flutter",
               style: TextStyle(color: Colors.black)),
-          actions: const <Widget>[Icon(Icons.thumb_up, color: Colors.black)],
+          actions: <Widget>[
+            Icon(Icons.thumb_up, color: Colors.black),
+            PopupMenuButton(
+              icon: Icon(
+                Icons.menu,
+                size: 40,
+              ),
+              elevation: 14,
+              initialValue: choix[1],
+              onSelected: select,
+              itemBuilder: (BuildContext context) {
+                return choix.map((Animaux info) {
+                  return PopupMenuItem<Animaux>(
+                    child: Text(info.name),
+                    value: info,
+                  );
+                }).toList();
+              },
+            )
+          ],
         ),
-        body: Center(
-          child: Container(
-            child: Column(
-              children: [
-                Text(
-                  "Mouvement de la souris: $info",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 20,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Image.asset(
-                      change ? a : b,
-                      height: 170,
-                      width: 170,
-                    ),
-                    Image.asset(
-                      change ? d : c,
-                      height: 170,
-                      width: 170,
-                    )
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      if (change = true) {
-                        onsubmit("un clique");
-                      } else {
-                        change = false;
-                      }
-                    });
-                  },
-                  onDoubleTap: () {
-                    setState(() {
-                      if (change = false) {
-                        onsubmit("double clique");
-                      } else {
-                        change = true;
-                      }
-                    });
-                  },
-                  onLongPress: () {
-                    setState(() {
-                      if (change = true) {
-                        onsubmit("long clique");
-                      } else {
-                        change = false;
-                      }
-                    });
-                  },
-                  onTapCancel: () {
-                    setState(() {
-                      if (change = false) {
-                        onsubmit("clique annulé");
-                      } else {
-                        change = true;
-                      }
-                    });
-                  },
-                  child: Center(
-                    child: Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Text(
-                        "VALIDATE",
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Affichage(info: selectitem)],
           ),
         ));
+  }
+}
+
+class Animaux {
+  String name;
+  String image;
+  Animaux({required this.name, required this.image});
+}
+
+List<Animaux> choix = <Animaux>[
+  Animaux(name: "Chat", image: "images/animaux/chat.jpg"),
+  Animaux(name: "Chien", image: "images/animaux/chien.jpg"),
+  Animaux(name: "Lion", image: "images/animaux/lion.jpg"),
+  Animaux(name: "Lapin", image: "images/animaux/lapin.jpg"),
+  Animaux(name: "Elephant", image: "images/animaux/elephant.jpg"),
+  Animaux(name: "Elephant", image: "images/animaux/elephant1.jpg"),
+  Animaux(name: "Pommes", image: "images/animaux/pommes.jpg"),
+];
+
+class Affichage extends StatelessWidget {
+  Animaux info;
+  Affichage({required this.info});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Column(
+          children: [
+            Text(
+              info.name,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            Image.asset(
+              info.image,
+              height: 300,
+              width: 300,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

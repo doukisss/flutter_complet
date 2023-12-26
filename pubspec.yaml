@@ -65,16 +65,14 @@ flutter:
   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-      - images/frites_a_la_viande.jpeg
-      - images/salade_composé.jpeg
-      - images/menu.jpeg
-      - images/boisson.jpeg  
-      - images/humburger.jpeg
-      - images/pizza.jpeg
-      - images/poisson_braisé.jpeg
-      - images/poulet.jpeg
-      - images/spaguetti.jpeg
-      - images/viande.jpeg
+      - images/animaux/chat.jpg
+      - images/animaux/lion.jpg
+      - images/animaux/lapin.jpg
+      - images/animaux/chien.jpg  
+      - images/animaux/elephant.jpg
+      - images/animaux/elephant1.jpg
+      - images/animaux/pommes.jpg
+      
       
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

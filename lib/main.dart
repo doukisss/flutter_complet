@@ -47,45 +47,27 @@ class _MyHomePageState extends State<MyHomePage> {
             Icon(Icons.thumb_up, color: Colors.black),
           ],
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                alignment: Alignment(0.5, 1),
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.red,
-                  ),
+        body: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [Colors.white, Colors.blue, Colors.limeAccent],
+                  center: Alignment.topLeft,
+                  radius: 2.0,
+                  tileMode: TileMode.repeated,
                 ),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.orange,
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green,
-                  ),
-                ),
-              ),
-            ],
-          ),
+              // decoration: const BoxDecoration(
+              //   gradient: LinearGradient(
+              //     colors: [Colors.white, Colors.blue, Colors.red],
+              //     begin: Alignment.topCenter,
+              //     end: Alignment.bottomLeft,
+              //     tileMode: TileMode.decal,
+              //   ),
+              // ),
+            )
+          ],
         ));
   }
 }

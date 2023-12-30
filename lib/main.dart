@@ -47,66 +47,143 @@ class _MyHomePageState extends State<MyHomePage> {
             Icon(Icons.thumb_up, color: Colors.black),
           ],
         ),
-        body: Center(
+        body: SingleChildScrollView(
           child: Column(
             children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  height: 300,
-                  child: Image.asset(
-                    'images/animaux/chat.jpg',
+              SizedBox(
+                height: 30,
+              ),
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
                     height: 300,
+                    child: Image.asset(
+                      'images/animaux/chat.jpg',
+                      fit: BoxFit.cover,
+                      height: 300,
+                    ),
                   ),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "Le chat est un felin",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Icon(
-                        Icons.star,
+                  Positioned(
+                      bottom: 50,
+                      left: 100,
+                      child: Container(
+                        width: 60,
+                        height: 30,
                         color: Colors.orange,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.red,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.green,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.blue,
-                      ),
-                    )
-                  ],
-                ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          'félin',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ))
+                ],
               ),
-              Container(
-                child: Text(
-                  "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              )
+              SizedBox(
+                height: 30,
+              ),
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 300,
+                    child: Image.asset(
+                      'images/animaux/chien.jpg',
+                      fit: BoxFit.cover,
+                      height: 300,
+                    ),
+                  ),
+                  Positioned(
+                      bottom: 50,
+                      right: 50,
+                      child: Container(
+                        width: 60,
+                        height: 30,
+                        color: Colors.blue,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'canin',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ))
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 300,
+                    child: Image.asset(
+                      'images/animaux/lapin.jpg',
+                      fit: BoxFit.cover,
+                      height: 300,
+                    ),
+                  ),
+                  Positioned(
+                      top: 50,
+                      left: 150,
+                      child: Container(
+                        width: 60,
+                        height: 30,
+                        color: Colors.green,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'rongeur',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ))
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 300,
+                    child: Image.asset(
+                      'images/animaux/elephant.jpg',
+                      fit: BoxFit.cover,
+                      height: 300,
+                    ),
+                  ),
+                  Positioned(
+                      top: 150,
+                      left: 150,
+                      child: Container(
+                        width: 60,
+                        height: 30,
+                        color: Colors.red,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'herbivore',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ))
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ));

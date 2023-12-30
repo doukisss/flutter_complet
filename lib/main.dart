@@ -47,27 +47,68 @@ class _MyHomePageState extends State<MyHomePage> {
             Icon(Icons.thumb_up, color: Colors.black),
           ],
         ),
-        body: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                gradient: RadialGradient(
-                  colors: [Colors.white, Colors.blue, Colors.limeAccent],
-                  center: Alignment.topLeft,
-                  radius: 2.0,
-                  tileMode: TileMode.repeated,
+        body: Center(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  height: 300,
+                  child: Image.asset(
+                    'images/animaux/chat.jpg',
+                    height: 300,
+                  ),
                 ),
               ),
-              // decoration: const BoxDecoration(
-              //   gradient: LinearGradient(
-              //     colors: [Colors.white, Colors.blue, Colors.red],
-              //     begin: Alignment.topCenter,
-              //     end: Alignment.bottomLeft,
-              //     tileMode: TileMode.decal,
-              //   ),
-              // ),
-            )
-          ],
+              Container(
+                child: Text(
+                  "Le chat est un felin",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.orange,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.red,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.blue,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                child: Text(
+                  "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }

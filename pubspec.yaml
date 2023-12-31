@@ -72,6 +72,17 @@ flutter:
       - images/animaux/elephant.jpg
       - images/animaux/elephant1.jpg
       - images/animaux/pommes.jpg
+
+      - images/boisson.jpeg
+      - images/frites_a_la_viande.jpeg
+      - images/humburger.jpeg
+      - images/pizza.jpeg
+      - images/poisson_braisé.jpeg
+      - images/poulet.jpeg
+      - images/spaguetti.jpeg
+      - images/viande.jpeg
+
+      
       
       
   # An image asset can refer to one or more resolution-specific "variants", see

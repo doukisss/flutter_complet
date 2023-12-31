@@ -35,6 +35,92 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Widget resto(String image, Color color, String title, String resume) {
+    return Column(
+      children: [
+        Column(
+          children: [
+            Row(
+              children: [
+                Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Container(
+                      width: 340,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                image,
+                              ),
+                              fit: BoxFit.cover)),
+                    ))
+              ],
+            )
+          ],
+        ),
+        Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: 25,
+                  width: 25,
+                  child: Icon(
+                    Icons.star,
+                    color: color,
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  child: Icon(
+                    Icons.star,
+                    color: color,
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  child: Icon(
+                    Icons.star,
+                    color: color,
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  child: Icon(
+                    Icons.star,
+                    color: color,
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  child: Icon(
+                    Icons.star_border,
+                    color: color,
+                  ),
+                ),
+                Container(
+                  width: 200,
+                  child: ExpansionTile(
+                    title: Text(
+                      title,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    children: [Text(resume)],
+                  ),
+                )
+              ],
+            )
+          ],
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,144 +134,28 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Stack(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 300,
-                    child: Image.asset(
-                      'images/animaux/chat.jpg',
-                      fit: BoxFit.cover,
-                      height: 300,
-                    ),
-                  ),
-                  Positioned(
-                      bottom: 50,
-                      left: 100,
-                      child: Container(
-                        width: 60,
-                        height: 30,
-                        color: Colors.orange,
-                        alignment: Alignment.center,
-                        child: Text(
-                          'félin',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ))
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Stack(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 300,
-                    child: Image.asset(
-                      'images/animaux/chien.jpg',
-                      fit: BoxFit.cover,
-                      height: 300,
-                    ),
-                  ),
-                  Positioned(
-                      bottom: 50,
-                      right: 50,
-                      child: Container(
-                        width: 60,
-                        height: 30,
-                        color: Colors.blue,
-                        alignment: Alignment.center,
-                        child: Text(
-                          'canin',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ))
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Stack(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 300,
-                    child: Image.asset(
-                      'images/animaux/lapin.jpg',
-                      fit: BoxFit.cover,
-                      height: 300,
-                    ),
-                  ),
-                  Positioned(
-                      top: 50,
-                      left: 150,
-                      child: Container(
-                        width: 60,
-                        height: 30,
-                        color: Colors.green,
-                        alignment: Alignment.center,
-                        child: Text(
-                          'rongeur',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ))
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Stack(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 300,
-                    child: Image.asset(
-                      'images/animaux/elephant.jpg',
-                      fit: BoxFit.cover,
-                      height: 300,
-                    ),
-                  ),
-                  Positioned(
-                      top: 150,
-                      left: 150,
-                      child: Container(
-                        width: 60,
-                        height: 30,
-                        color: Colors.red,
-                        alignment: Alignment.center,
-                        child: Text(
-                          'herbivore',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ))
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-            ],
-          ),
-        ));
+            child: Column(
+          children: [
+            resto('images/boisson.jpeg', Colors.blue, 'Boisson',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'),
+            resto(
+                'images/frites_a_la_viande.jpeg',
+                Colors.orange,
+                'Frites à la viande',
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            resto('images/humburger.jpeg', Colors.red, 'Humburger',
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            resto('images/pizza.jpeg', Colors.green, 'Pizza',
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            resto('images/poisson_braisé.jpeg', Colors.black, 'Poisson braisé',
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            resto('images/poulet.jpeg', Colors.lime, 'Poulet',
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            resto('images/spaguetti.jpeg', Colors.purple, 'Spaguetti',
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            resto('images/viande.jpeg', Colors.indigo, 'Viande',
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+          ],
+        )));
   }
 }

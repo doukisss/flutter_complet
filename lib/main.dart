@@ -1,7 +1,7 @@
 // ignore_for_file: empty_constructor_bodies
 
 import 'package:flutter/material.dart';
-import 'package:star_rating/star_rating.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,91 +35,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget resto(String image, Color color, String title, String resume) {
-    return Column(
-      children: [
-        Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Container(
-                      width: 340,
-                      height: 200,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                image,
-                              ),
-                              fit: BoxFit.cover)),
-                    ))
-              ],
-            )
-          ],
-        ),
-        Column(
-          children: [
-            Row(
-              children: [
-                Container(
-                  height: 25,
-                  width: 25,
-                  child: Icon(
-                    Icons.star,
-                    color: color,
-                  ),
-                ),
-                Container(
-                  height: 25,
-                  width: 25,
-                  child: Icon(
-                    Icons.star,
-                    color: color,
-                  ),
-                ),
-                Container(
-                  height: 25,
-                  width: 25,
-                  child: Icon(
-                    Icons.star,
-                    color: color,
-                  ),
-                ),
-                Container(
-                  height: 25,
-                  width: 25,
-                  child: Icon(
-                    Icons.star,
-                    color: color,
-                  ),
-                ),
-                Container(
-                  height: 25,
-                  width: 25,
-                  child: Icon(
-                    Icons.star_border,
-                    color: color,
-                  ),
-                ),
-                Container(
-                  width: 200,
-                  child: ExpansionTile(
-                    title: Text(
-                      title,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    children: [Text(resume)],
-                  ),
-                )
-              ],
-            )
-          ],
-        )
-      ],
-    );
-  }
+  int page = 0;
+
+  var affichage = <Widget>[
+    Center(
+      child: Container(
+        height: 500,
+        width: 500,
+        child: Image.asset('images/animaux/chat.jpg'),
+      ),
+    ),
+    Center(
+      child: Container(
+        height: 500,
+        width: 500,
+        child: Image.asset('images/animaux/chien.jpg'),
+      ),
+    ),
+    Center(
+      child: Container(
+        height: 500,
+        width: 500,
+        child: Image.asset('images/animaux/lapin.jpg'),
+      ),
+    ),
+    Center(
+      child: Container(
+        height: 500,
+        width: 500,
+        child: Image.asset('images/animaux/elephant.jpg'),
+      ),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -133,29 +80,39 @@ class _MyHomePageState extends State<MyHomePage> {
             Icon(Icons.thumb_up, color: Colors.black),
           ],
         ),
-        body: SingleChildScrollView(
-            child: Column(
-          children: [
-            resto('images/boisson.jpeg', Colors.blue, 'Boisson',
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'),
-            resto(
-                'images/frites_a_la_viande.jpeg',
-                Colors.orange,
-                'Frites à la viande',
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            resto('images/humburger.jpeg', Colors.red, 'Humburger',
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            resto('images/pizza.jpeg', Colors.green, 'Pizza',
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            resto('images/poisson_braisé.jpeg', Colors.black, 'Poisson braisé',
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            resto('images/poulet.jpeg', Colors.lime, 'Poulet',
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            resto('images/spaguetti.jpeg', Colors.purple, 'Spaguetti',
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            resto('images/viande.jpeg', Colors.indigo, 'Viande',
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+        bottomNavigationBar: CurvedNavigationBar(
+          animationCurve: Curves.bounceIn,
+          animationDuration: Duration(milliseconds: 600),
+          items: <Widget>[
+            Icon(
+              Icons.beenhere,
+              size: 50,
+              color: Colors.blue,
+            ),
+            Icon(
+              Icons.camera_roll,
+              size: 50,
+              color: Colors.tealAccent,
+            ),
+            Icon(
+              Icons.donut_small,
+              size: 50,
+              color: Colors.green,
+            ),
+            Icon(
+              Icons.dvr,
+              size: 50,
+              color: Colors.red,
+            ),
           ],
-        )));
+          onTap: (value) {
+            setState(() {
+              page = value;
+            });
+          },
+        ),
+        body: Center(
+          child: affichage[page],
+        ));
   }
 }

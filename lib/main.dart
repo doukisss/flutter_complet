@@ -1,6 +1,7 @@
 // ignore_for_file: empty_constructor_bodies
 
 import 'package:flutter/material.dart';
+import 'package:flip_card/flip_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,187 +35,109 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Container> containerlist = [];
-  final poster = [
-    {"name": "Menu", "photo": "menu.jpeg"},
-    {"name": "Boisson", "photo": "boisson.jpeg"},
-    {"name": "frites à la viande", "photo": "frites_a_la_viande.jpeg"},
-    {"name": "Humburger", "photo": "humburger.jpeg"},
-    {"name": "Pizza", "photo": "pizza.jpeg"},
-    {"name": "Poisson braisé", "photo": "poisson_braisé.jpeg"},
-    {"name": "Poulet", "photo": "poulet.jpeg"},
-    {"name": "Salade composé", "photo": "salade_composé.jpeg"},
-    {"name": "Spaguetti", "photo": "spaguetti.jpeg"},
-    {"name": "viande", "photo": "viande.jpeg"},
-  ];
+  String categorie1 = "dessert";
+  String categorie2 = "Viande";
+  String categorie3 = "Poisson";
+  String categorie4 = "patte";
+  String categorie5 = "volaille";
+  String name1 = "Un coca cola";
+  String name2 = "De la iande braisé";
+  String name3 = "Un poisson braisé";
+  String name4 = "un délicieux spaguetti";
+  String name5 = "un Poulet braisé";
 
-  buildlist() {
-    for (var i = 0; i < poster.length; i++) {
-      var gleinfo = poster[i];
-      var infophoto = gleinfo["photo"];
-      var infoname = gleinfo["name"];
-      int pourcentage = 85 + i;
-      containerlist.add(Container(
-        child: Card(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                child: Hero(
-                    tag: "$infoname",
-                    child: Material(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => Showdetail(
-                                  namedetail: "$infoname",
-                                  posterdetail: "$infophoto",
-                                  percent: pourcentage)));
-                        },
-                        child: Container(
-                          height: 157,
-                          width: 250,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              image: DecorationImage(
-                                  image: AssetImage("images/$infophoto"))),
-                        ),
-                      ),
-                    )),
+  String frontimage1 = "images/boisson.jpeg";
+  String frontimage2 = "images/viande.jpeg";
+  String frontimage3 = "images/poisson_braisé.jpeg";
+  String frontimage4 = "images/spaguetti.jpeg";
+  String frontimage5 = "images/poulet.jpeg";
+  String backimage1 = "images/boisson.jpeg";
+  String backimage2 = "images/viande.jpeg";
+  String backimage3 = "images/poisson_braisé.jpeg";
+  String backimage4 = "images/spaguetti.jpeg";
+  String backimage5 = "images/poulet.jpeg";
+
+  Widget flipcards(
+      String categorie, String name, String frontimage, String backimage) {
+    return Align(
+      alignment: Alignment.center,
+      child: FlipCard(
+        front: Container(
+          width: 500,
+          height: 600,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Text(
+              "Découvrez votre $categorie",
+              style: TextStyle(
+                fontSize: 25,
               ),
-              Text("$infoname"),
-            ],
+            ),
+          ),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            image: DecorationImage(
+              image: AssetImage(
+                frontimage,
+              ),
+            ),
           ),
         ),
-      ));
-    }
-  }
-
-  @override
-  void initState() {
-    buildlist();
-    super.initState();
+        back: Container(
+          width: 500,
+          height: 600,
+          decoration: BoxDecoration(
+            color: Colors.green,
+            image: DecorationImage(image: AssetImage(backimage)),
+          ),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              "$name",
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.purpleAccent,
-        title: const Text("Tutoriel flutter",
-            style: TextStyle(color: Colors.black)),
-        actions: <Widget>[
-          Icon(Icons.thumb_up, color: Colors.black),
-        ],
-      ),
-      body: Container(
-        child: GridView.count(crossAxisCount: 2, children: containerlist),
-      ),
-    );
-  }
-}
-
-class Showdetail extends StatelessWidget {
-  final String namedetail, posterdetail;
-  int percent;
-  Showdetail(
-      {required this.namedetail,
-      required this.posterdetail,
-      required this.percent});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.movie_creation,
-              ))
-        ],
-        title: Text(
-          namedetail,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.purpleAccent,
+          title: const Text("Tutoriel flutter",
+              style: TextStyle(color: Colors.black)),
+          actions: <Widget>[
+            Icon(Icons.thumb_up, color: Colors.black),
+          ],
         ),
-        backgroundColor: Colors.green,
-      ),
-      body: ListView(
-        children: [
-          Container(
-            height: 530,
-            width: 250,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                    image: AssetImage(
-                      "images/$posterdetail",
-                    ),
-                    fit: BoxFit.cover)),
-          ),
-          Padding(
-            padding: EdgeInsets.all(15),
-            child: Align(
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.play_arrow_sharp,
-                    size: 30,
-                    color: Colors.red,
-                  ),
-                  Text(
-                    "Play trial",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  )
-                ],
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    flipcards(categorie1, name1, frontimage1, backimage1),
+                    const SizedBox(height: 20),
+                    flipcards(categorie2, name2, frontimage2, backimage2),
+                    const SizedBox(height: 20),
+                    flipcards(categorie3, name3, frontimage3, backimage3),
+                    const SizedBox(height: 20),
+                    flipcards(categorie4, name4, frontimage4, backimage4),
+                    const SizedBox(height: 20),
+                    flipcards(categorie5, name5, frontimage5, backimage5),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
-            ),
-          ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "$percent% liked this food",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Icon(
-                  Icons.thumb_up,
-                  size: 30,
-                  color: Colors.green,
-                ),
-                Icon(
-                  Icons.thumb_down,
-                  size: 30,
-                  color: Colors.red,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Description",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                    "Description bsefj ebek efbhjk fbhskljh rgbfsb dbskfjshlj hfhfsjbf dfghfgjfsjk efgsfdjfh defhfj sugfebf gfsfh sfsfhb  ehjb hbf h sqebf fb")
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+            )
+          ],
+        ));
   }
 }

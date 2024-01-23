@@ -75,6 +75,7 @@ flutter:
       - images/animaux/elephant1.jpg
       - images/animaux/pommes.jpg
 
+      - images/menu.jpeg
       - images/boisson.jpeg
       - images/frites_a_la_viande.jpeg
       - images/humburger.jpeg

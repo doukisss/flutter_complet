@@ -1,7 +1,6 @@
 // ignore_for_file: empty_constructor_bodies
 
 import 'package:flutter/material.dart';
-import 'package:folding_cell/folding_cell.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,6 +34,68 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<Container> containerlist = [];
+  final poster = [
+    {"name": "Menu", "photo": "menu.jpeg"},
+    {"name": "Boisson", "photo": "boisson.jpeg"},
+    {"name": "frites à la viande", "photo": "frites_a_la_viande.jpeg"},
+    {"name": "Humburger", "photo": "humburger.jpeg"},
+    {"name": "Pizza", "photo": "pizza.jpeg"},
+    {"name": "Poisson braisé", "photo": "poisson_braisé.jpeg"},
+    {"name": "Poulet", "photo": "poulet.jpeg"},
+    {"name": "Salade composé", "photo": "salade_composé.jpeg"},
+    {"name": "Spaguetti", "photo": "spaguetti.jpeg"},
+    {"name": "viande", "photo": "viande.jpeg"},
+  ];
+
+  buildlist() {
+    for (var i = 0; i < poster.length; i++) {
+      var gleinfo = poster[i];
+      var infophoto = gleinfo["photo"];
+      var infoname = gleinfo["name"];
+      int pourcentage = 85 + i;
+      containerlist.add(Container(
+        child: Card(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: Hero(
+                    tag: "$infoname",
+                    child: Material(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => Showdetail(
+                                  namedetail: "$infoname",
+                                  posterdetail: "$infophoto",
+                                  percent: pourcentage)));
+                        },
+                        child: Container(
+                          height: 157,
+                          width: 250,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: DecorationImage(
+                                  image: AssetImage("images/$infophoto"))),
+                        ),
+                      ),
+                    )),
+              ),
+              Text("$infoname"),
+            ],
+          ),
+        ),
+      ));
+    }
+  }
+
+  @override
+  void initState() {
+    buildlist();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,70 +108,113 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.thumb_up, color: Colors.black),
         ],
       ),
-      body:
-          Container(child: OrientationBuilder(builder: (context, orientation) {
-        if (orientation == Orientation.portrait) {
-          return tablemeteo();
-        } else {
-          return tablemeteo();
-        }
-      })),
+      body: Container(
+        child: GridView.count(crossAxisCount: 2, children: containerlist),
+      ),
     );
   }
 }
 
-Widget tablemeteo() {
-  return Container(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "TABLEAU METEO",
-          style: TextStyle(color: Colors.blue, fontSize: 30),
-        ),
-        Divider(
-          height: 30,
-        ),
-        DataTable(columns: <DataColumn>[
-          DataColumn(label: Text("Vent")),
-          DataColumn(label: Text("Visibilité")),
-          DataColumn(label: Text("Humudité")),
-          DataColumn(label: Text("Levée du soleil")),
-        ], rows: <DataRow>[
-          DataRow(
-            cells: <DataCell>[
-              DataCell(ListTile(
-                title: Text("75km/h"),
-              )),
-              DataCell(ListTile(
-                title: Text("53"),
-              )),
-              DataCell(ListTile(
-                title: Text("14km"),
-              )),
-              DataCell(ListTile(
-                title: Text("6h20"),
-              )),
-            ],
+class Showdetail extends StatelessWidget {
+  final String namedetail, posterdetail;
+  int percent;
+  Showdetail(
+      {required this.namedetail,
+      required this.posterdetail,
+      required this.percent});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.movie_creation,
+              ))
+        ],
+        title: Text(
+          namedetail,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-          DataRow(
-            cells: <DataCell>[
-              DataCell(ListTile(
-                title: Text("72km/h"),
-              )),
-              DataCell(ListTile(
-                title: Text("50"),
-              )),
-              DataCell(ListTile(
-                title: Text("16km"),
-              )),
-              DataCell(ListTile(
-                title: Text("6h25"),
-              )),
-            ],
+        ),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView(
+        children: [
+          Container(
+            height: 530,
+            width: 250,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                image: DecorationImage(
+                    image: AssetImage(
+                      "images/$posterdetail",
+                    ),
+                    fit: BoxFit.cover)),
           ),
-        ])
-      ],
-    ),
-  );
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: Align(
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.play_arrow_sharp,
+                    size: 30,
+                    color: Colors.red,
+                  ),
+                  Text(
+                    "Play trial",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "$percent% liked this food",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Icon(
+                  Icons.thumb_up,
+                  size: 30,
+                  color: Colors.green,
+                ),
+                Icon(
+                  Icons.thumb_down,
+                  size: 30,
+                  color: Colors.red,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Description",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                    "Description bsefj ebek efbhjk fbhskljh rgbfsb dbskfjshlj hfhfsjbf dfghfgjfsjk efgsfdjfh defhfj sugfebf gfsfh sfsfhb  ehjb hbf h sqebf fb")
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

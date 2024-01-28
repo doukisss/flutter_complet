@@ -35,72 +35,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String categorie1 = "dessert";
-  String categorie2 = "Viande";
-  String categorie3 = "Poisson";
-  String categorie4 = "patte";
-  String categorie5 = "volaille";
-  String name1 = "Un coca cola";
-  String name2 = "De la iande braisé";
-  String name3 = "Un poisson braisé";
-  String name4 = "un délicieux spaguetti";
-  String name5 = "un Poulet braisé";
-
-  String frontimage1 = "images/boisson.jpeg";
-  String frontimage2 = "images/viande.jpeg";
-  String frontimage3 = "images/poisson_braisé.jpeg";
-  String frontimage4 = "images/spaguetti.jpeg";
-  String frontimage5 = "images/poulet.jpeg";
-  String backimage1 = "images/boisson.jpeg";
-  String backimage2 = "images/viande.jpeg";
-  String backimage3 = "images/poisson_braisé.jpeg";
-  String backimage4 = "images/spaguetti.jpeg";
-  String backimage5 = "images/poulet.jpeg";
-
-  Widget flipcards(
-      String categorie, String name, String frontimage, String backimage) {
-    return Align(
-      alignment: Alignment.center,
-      child: FlipCard(
-        front: Container(
-          width: 500,
-          height: 600,
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Text(
-              "Découvrez votre $categorie",
-              style: TextStyle(
-                fontSize: 25,
-              ),
-            ),
-          ),
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            image: DecorationImage(
-              image: AssetImage(
-                frontimage,
-              ),
-            ),
-          ),
-        ),
-        back: Container(
-          width: 500,
-          height: 600,
-          decoration: BoxDecoration(
-            color: Colors.green,
-            image: DecorationImage(image: AssetImage(backimage)),
-          ),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              "$name",
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  bool opacite = true;
 
   @override
   Widget build(BuildContext context) {
@@ -120,23 +55,61 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    flipcards(categorie1, name1, frontimage1, backimage1),
-                    const SizedBox(height: 20),
-                    flipcards(categorie2, name2, frontimage2, backimage2),
-                    const SizedBox(height: 20),
-                    flipcards(categorie3, name3, frontimage3, backimage3),
-                    const SizedBox(height: 20),
-                    flipcards(categorie4, name4, frontimage4, backimage4),
-                    const SizedBox(height: 20),
-                    flipcards(categorie5, name5, frontimage5, backimage5),
-                    const SizedBox(height: 20),
-                  ],
-                ),
-              ),
-            )
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("images/pizza.jpeg"),
+                      fit: BoxFit.cover)),
+            ),
+            Padding(
+                padding: EdgeInsets.only(top: 50, left: 50),
+                child: AnimatedOpacity(
+                  opacity: opacite ? 1.0 : 0.0,
+                  duration: Duration(
+                    seconds: 2,
+                  ),
+                  child: Container(
+                    width: 250,
+                    height: 250,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage("images/animaux/chat.jpg"),
+                            fit: BoxFit.contain)),
+                  ),
+                )),
+            Align(
+                alignment: Alignment.topCenter,
+                child: Opacity(
+                  opacity: opacite ? 1.0 : 0.5,
+                  child: Text(
+                    "OPACITY",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 60,
+                      color: Colors.white,
+                    ),
+                  ),
+                )),
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Opacity(
+                    opacity: opacite ? 1.0 : 0.5,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        setState(() {
+                          opacite = !opacite;
+                        });
+                      },
+                      child: Text(
+                        "GO ON >>",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ))),
           ],
         ));
   }

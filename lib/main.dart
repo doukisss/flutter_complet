@@ -1,7 +1,6 @@
 // ignore_for_file: empty_constructor_bodies
 
 import 'package:flutter/material.dart';
-import 'package:flip_card/flip_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,38 +34,41 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget hairimage(String img) {
+  Widget womenhair(String holder, String img) {
     return Container(
-      width: 600,
-      height: 600,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(65),
-          image: DecorationImage(image: NetworkImage(img))),
+      width: 200,
+      height: 300,
+      child: Column(children: [
+        ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(75),
+            topRight: Radius.circular(75),
+          ),
+          child: FadeInImage.assetNetwork(
+            placeholder: holder,
+            image: img,
+            fit: BoxFit.fill,
+            fadeInDuration: Duration(
+              seconds: 5,
+            ),
+          ),
+        ),
+      ]),
     );
   }
 
-  Widget description(String titre, String detail) {
+  Widget titre(String info) {
     return Container(
-      width: 450,
-      height: 150,
-      child: Column(children: [
-        Text(
-          titre,
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.green,
-          ),
-        ),
-        Text(
-          detail,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-            color: Colors.blue,
-          ),
-        )
-      ]),
+      width: 200,
+      child: Column(
+        children: [
+          Text(
+            info,
+            style: TextStyle(
+                color: Colors.blue, fontSize: 25, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
     );
   }
 
@@ -84,65 +86,130 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: ListView(
           children: [
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Container(
-                child: FittedBox(
-                  child: Material(
-                    borderRadius: BorderRadius.circular(65),
-                    elevation: 10,
-                    shadowColor: Colors.grey,
-                    child: Column(
+            FittedBox(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
                       children: [
-                        hairimage(
-                            "https://coupedecheveuxhomme.org/wp-content/uploads/2018/03/13743438_1297114323633286_217607531_n1-1024x10241.jpg"),
-                        Padding(padding: EdgeInsets.all(5)),
-                        description("Modèle puntch",
-                            "Modèle puntch viub unjhn yubhion yuhojnh uhjioh uhui uhui uuh uu uiuj ujhio uihjih uihui uihunj hjn uijhi uihji uihuipjn uihjipuo uhjiopj uijiopj uiopj uij uiji ijiopj uiojpoij  ijju iojioj ioj iojpioj iji iojioj iojpiojpi "),
-                        SizedBox(
-                          height: 25,
-                          child: Container(width: 400, color: Colors.grey),
-                        ),
-                        hairimage(
-                            "https://coupedecheveuxhomme.org/wp-content/uploads/2018/03/26277352_212471045981885_3403692819653591040_n1-1068x12871.jpg"),
-                        Padding(padding: EdgeInsets.all(5)),
-                        description("Modèle puntch",
-                            "Modèle puntch viub unjhn yubhion yuhojnh uhjioh uhui uhui uuh uu uiuj ujhio uihjih uihui uihunj hjn uijhi uihji uihuipjn uihjipuo uhjiopj uijiopj uiopj uij uiji ijiopj uiojpoij  ijju iojioj ioj iojpioj iji iojioj iojpiojpi "),
-                        SizedBox(
-                          height: 25,
-                          child: Container(width: 400, color: Colors.grey),
-                        ),
-                        hairimage(
-                            "https://coupedecheveuxhomme.org/wp-content/uploads/2018/03/26870401_168054393812825_2093106480109584384_n1-1024x10011.jpg"),
-                        Padding(padding: EdgeInsets.all(5)),
-                        description("Modèle puntch",
-                            "Modèle puntch viub unjhn yubhion yuhojnh uhjioh uhui uhui uuh uu uiuj ujhio uihjih uihui uihunj hjn uijhi uihji uihuipjn uihjipuo uhjiopj uijiopj uiopj uij uiji ijiopj uiojpoij  ijju iojioj ioj iojpioj iji iojioj iojpiojpi "),
-                        SizedBox(
-                          height: 25,
-                          child: Container(width: 400, color: Colors.grey),
-                        ),
-                        hairimage(
-                            "https://coupedecheveuxhomme.org/wp-content/uploads/2018/03/13743438_1297114323633286_217607531_n1-1024x10241.jpg"),
-                        Padding(padding: EdgeInsets.all(5)),
-                        description("Modèle puntch",
-                            "Modèle puntch viub unjhn yubhion yuhojnh uhjioh uhui uhui uuh uu uiuj ujhio uihjih uihui uihunj hjn uijhi uihji uihuipjn uihjipuo uhjiopj uijiopj uiopj uij uiji ijiopj uiojpoij  ijju iojioj ioj iojpioj iji iojioj iojpiojpi "),
-                        SizedBox(
-                          height: 25,
-                          child: Container(width: 400, color: Colors.grey),
-                        ),
-                        hairimage(
-                            "https://coupedecheveuxhomme.org/wp-content/uploads/2018/03/13712203_133710833733602_863682278_n1-1024x10241.jpg"),
-                        Padding(padding: EdgeInsets.all(25)),
-                        description("Modèle puntch",
-                            "Modèle puntch viub unjhn yubhion yuhojnh uhjioh uhui uhui uuh uu uiuj ujhio uihjih uihui uihunj hjn uijhi uihji uihuipjn uihjipuo uhjiopj uijiopj uiopj uij uiji ijiopj uiojpoij  ijju iojioj ioj iojpioj iji iojioj iojpiojpi "),
-                        SizedBox(
-                          height: 25,
-                          child: Container(width: 400, color: Colors.grey),
-                        ),
+                        womenhair("images/Fidget-spinner.gif",
+                            "https://i.pinimg.com/564x/0a/81/a2/0a81a2db05859cb9a9d1896d556ef769.jpg"),
+                        womenhair("images/Spinner-3.gif",
+                            "https://i.pinimg.com/564x/73/dd/d3/73ddd32402246caeb93211a5cb2b9a18.jpg"),
                       ],
                     ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        titre("Rat Congo"),
+                        titre("Classe"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        womenhair("images/Fidget-spinner.gif",
+                            "https://i.pinimg.com/474x/99/1d/e8/991de80a9cde10a0a51d10b4b1b82c09.jpg"),
+                        womenhair("images/Spinner-3.gif",
+                            "https://i.pinimg.com/236x/41/81/42/41814220b9db470a0f21ab45e3d2b786.jpg"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        titre("Nature frisé"),
+                        titre("création salon"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        womenhair("images/Fidget-spinner.gif",
+                            "https://i.pinimg.com/474x/99/1d/e8/991de80a9cde10a0a51d10b4b1b82c09.jpg"),
+                        womenhair("images/Spinner-3.gif",
+                            "https://i.pinimg.com/236x/41/81/42/41814220b9db470a0f21ab45e3d2b786.jpg"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        titre("Nature frisé"),
+                        titre("création salon"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        womenhair("images/Fidget-spinner.gif",
+                            "https://i.pinimg.com/564x/0a/81/a2/0a81a2db05859cb9a9d1896d556ef769.jpg"),
+                        womenhair("images/Spinner-3.gif",
+                            "https://i.pinimg.com/564x/73/dd/d3/73ddd32402246caeb93211a5cb2b9a18.jpg"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        titre("Rat Congo"),
+                        titre("Classe"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        womenhair("images/Fidget-spinner.gif",
+                            "https://i.pinimg.com/474x/99/1d/e8/991de80a9cde10a0a51d10b4b1b82c09.jpg"),
+                        womenhair("images/Spinner-3.gif",
+                            "https://i.pinimg.com/236x/41/81/42/41814220b9db470a0f21ab45e3d2b786.jpg"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        titre("Nature frisé"),
+                        titre("création salon"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        womenhair("images/Fidget-spinner.gif",
+                            "https://i.pinimg.com/474x/99/1d/e8/991de80a9cde10a0a51d10b4b1b82c09.jpg"),
+                        womenhair("images/Spinner-3.gif",
+                            "https://i.pinimg.com/236x/41/81/42/41814220b9db470a0f21ab45e3d2b786.jpg"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        titre("Nature frisé"),
+                        titre("création salon"),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             )
           ],

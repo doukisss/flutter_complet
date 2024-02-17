@@ -1,6 +1,8 @@
 // ignore_for_file: empty_constructor_bodies
 
-import 'package:charts_flutter_new/flutter.dart' as charts;
+import 'dart:async';
+
+import 'package:video_player/video_player.dart';
 
 import 'package:flutter/material.dart';
 
@@ -36,21 +38,101 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<InfoList> execute = [
-    InfoList("images/boisson.jpeg", "Sprite", "13/02/2024", Colors.orange),
-    InfoList("images/pizza.jpeg", "Pizza", "13/02/2024", Colors.orange),
-    InfoList("images/humburger.jpeg", "Humburger", "13/02/2024", Colors.orange),
-    InfoList(
-        "images/frites_a_la_viande.jpeg", "Frite", "13/02/2024", Colors.orange),
-    InfoList("images/fusée3.jpg", "Fusée", "13/02/2024", Colors.orange),
-    InfoList("images/poulet.jpeg", "Poulet", "13/02/2024", Colors.orange),
-    InfoList("images/spaguetti.jpeg", "Spaguetti", "13/02/2024", Colors.orange),
-    InfoList("images/viande.jpeg", "Viande", "13/02/2024", Colors.orange),
-    InfoList("images/poisson_braisé.jpeg", "Poisson braisé", "13/02/2024",
-        Colors.orange),
-    InfoList("images/salade_composé.jpeg", "Salade composé", "13/02/2024",
-        Colors.orange),
+  late VideoPlayerController videocontroller;
+
+  String textlisting = '';
+  int val = 0;
+
+  List textlist = [
+    "Max Mercer est un petit garçon facétieux et plein de ressources",
+    "qui a été laissé à la maison pendant que sa famille est en vacances",
+    "au Japon pour les fêtes.",
+    "Alors, lorsqu’un couple marié, qui tente de récupérer un précieux héritage,",
+    "jette son dévolu sur la maison des Mercer,",
+    "c’est Max qui va devoir protéger le domicile familial des intrus…",
+    "et il fera tout ce qu’il peut pour les empêcher d’entrer !",
+    "Les péripéties épiques et hilarantes s’enchaînent et en dépit du chaos absolu généré",
+    "par ses efforts, Max en vient à réaliser à quel point on est bien chez soi."
   ];
+
+  affiche() {
+    return Stack(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 250,
+          child: Image(
+            image: AssetImage("images/maman_jai_rate_lavion.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          width: 150,
+          height: 150,
+          top: 215,
+          left: 10,
+          child: Image(
+            image: AssetImage("images/maman_jai_rate_lavion.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          width: 400,
+          height: 100,
+          top: 5,
+          left: 110,
+          child: Text(
+            "Manman j'ai raté l'avion",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Positioned(
+          width: 150,
+          height: 150,
+          top: 245,
+          left: 200,
+          child: Text(
+            "2021",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Positioned(
+            width: 200,
+            height: 150,
+            top: 275,
+            left: 200,
+            child: Container(
+              color: Colors.white,
+              child: Text(
+                "Manman j'ai raté l'avion. la saga recommence",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            )),
+      ],
+    );
+  }
+
+  void initState() {
+    super.initState();
+    videocontroller = VideoPlayerController.asset(
+        "images/maman_jai_rate_lavion_ca_recommence.mp4")
+      ..initialize().then((_) {
+        setState(() {});
+        videocontroller.play();
+        videocontroller.setLooping(true);
+        videocontroller.setVolume(1.0);
+        Timer.periodic(Duration(seconds: 5), (Timer timer) {
+          setState(() {
+            textlisting = textlist[val];
+            val++;
+            if (val == textlist.length) {
+              val = 0;
+            }
+          });
+        });
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,136 +145,88 @@ class _MyHomePageState extends State<MyHomePage> {
             Icon(Icons.thumb_up, color: Colors.black),
           ],
         ),
-        body: ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: execute.length,
-            itemBuilder: ((context, index) {
-              InfoList ls = execute[index];
-              return Dismissible(
-                key: Key(ls.detail),
-                child: WidgetInfo(
-                  entry: execute[index],
-                  key: Key(ls.detail),
-                ),
-                onDismissed: (direction) {
-                  setState(() {
-                    execute.removeAt(index);
-                  });
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(
-                      ls.detail + " supprimé",
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 350,
+                child: affiche(),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 2),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(
+                      Icons.favorite,
+                      size: 30,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      "3251",
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     ),
-                    action: SnackBarAction(
-                        label: "Annuler",
-                        onPressed: () {
-                          setState(() {
-                            execute.add(ls);
-                          });
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              ls.detail + " rajouté en fin de liste",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                          ));
-                        }),
-                  ));
-                },
-                background: Container(
-                  color: ls.color,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.delete,
-                        size: 25,
-                      ),
-                      Text(
-                        ls.detail + " sera supprimé.",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                    Icon(
+                      Icons.star,
+                      size: 30,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      "3251",
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
-                secondaryBackground: Container(
-                  color: ls.color,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Icon(
-                        Icons.delete_forever,
-                        size: 25,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            })));
-  }
-}
-
-class InfoList {
-  String image;
-  String detail;
-  String date;
-  Color color;
-  InfoList(this.image, this.detail, this.date, this.color);
-}
-
-class WidgetInfo extends StatelessWidget {
-  final InfoList entry;
-
-  const WidgetInfo({super.key, required this.entry});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset(
-                  entry.image,
-                  width: 70,
-                  height: 70,
-                ),
-                Text(
-                  entry.detail,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  entry.date,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 30,
-                  width: 2,
-                  child: Container(
-                    color: entry.color,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5),
-            child: SizedBox(
-              height: 2,
-              width: MediaQuery.of(context).size.width,
-              child: Container(
-                color: Colors.grey,
               ),
-            ),
-          )
-        ],
-      ),
-    );
+              Padding(
+                  padding: EdgeInsets.only(top: 2),
+                  child: Text(
+                    textlisting,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 2),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
+                  child: videocontroller.value.isInitialized
+                      ? AspectRatio(
+                          aspectRatio: videocontroller.value.aspectRatio,
+                          child: VideoPlayer(videocontroller),
+                        )
+                      : Container(),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 2),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        videocontroller.value.isPlaying
+                            ? videocontroller.pause()
+                            : videocontroller.play();
+                      },
+                      child: videocontroller.value.isPlaying
+                          ? Icon(
+                              Icons.pause,
+                              size: 50,
+                            )
+                          : Icon(
+                              Icons.play_arrow,
+                              size: 50,
+                            ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

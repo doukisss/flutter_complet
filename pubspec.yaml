@@ -42,6 +42,7 @@ dependencies:
   folding_cell: ^1.0.2
   flip_card: ^0.7.0
   charts_flutter_new: ^0.12.0
+  video_player: ^2.7.2
   
 
 dev_dependencies:
@@ -97,6 +98,8 @@ flutter:
       - images/soleil1.jpeg
       - images/fusée3.jpg
       - images/satellite3.jpeg
+      - images/maman_jai_rate_lavion.jpg
+      - images/maman_jai_rate_lavion_ca_recommence.mp4
 
       
       
